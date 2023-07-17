@@ -1,11 +1,16 @@
 import React from "react";
 import './sectionbox.css';
-const Selectionbox=()=>{
+const Selectionbox=({setStatus})=>{
+
+    const updateStatus=(e)=>{
+        setStatus(e.target.value);
+    }
+
     return(
-        <select className="select">
+        <select onClick={updateStatus}className="select">
             <option>All</option>
             <option>Completed</option>
-            <option>inCompleted</option>
+            <option>Incompleted</option>
         </select>
     )
 }
