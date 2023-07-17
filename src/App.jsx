@@ -9,20 +9,36 @@ const App=()=> {
   const [todos, updateTodos]=useState([]);
   const [filtertodos, setfiltertodos]=useState([]);
   const [status, setStatus]=useState([]);
+  
+  useEffect(() => {
+    if(localStorage.getItem('todos')){
+      const todosFromLocalStorage= JSON.parse(localStorage.getItem('todos'));
+      if(todosFromLocalStorage) updateTodos(todosFromLocalStorage);
+    }
+  },[])
 
- useEffect(()=>{
-  switch(status){
-    case "Completed": 
-      setfiltertodos(todos.filter(todo=>todo.complete));
-      break;
+  useEffect(()=>{
+    if(todos.length>0){
+      localStorage.setItem('todos',JSON.stringify(todos));
+    }
+    else{
+      localStorage.removeItem("todos");
+    }
+  },[todos]);
 
-    case "Incompleted":
-      setfiltertodos(todos.filter(todo=>!todo.complete));
-      break;
+  useEffect(()=>{
+    switch(status){
+      case "Completed": 
+        setfiltertodos(todos.filter(todo=>todo.completeAction));
+        break;
 
-    default:
-      setfiltertodos(todos);
-      break;
+      case "Incompleted":
+        setfiltertodos(todos.filter(todo=>!todo.completeAction));
+        break;
+
+      default:
+        setfiltertodos(todos);
+        break;
   }
 
  }, [status, todos])
@@ -32,8 +48,6 @@ const App=()=> {
       <h1>List for your daily routine</h1>
       <Form todos={todos} updateTodos={updateTodos} />
       <List filtertodos={filtertodos} setStatus={setStatus} updateTodos={updateTodos} todos={todos}/>
-    
-  
     </div>
     
   )

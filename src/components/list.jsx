@@ -1,27 +1,28 @@
 import React from 'react';
 import "../css/list.css";
 import ListItem from './listItem';
-import Selectionbox from './sectionbox';
+import Selectionbox from './selectionBox';
 
 const List=({filtertodos, setStatus, updateTodos, todos})=>{
+  console.log("filtertodos", filtertodos);
     return(
         <div className="todo-container">
         <div className="todo-content">
           
         {
-          filtertodos.length>0 && filtertodos.map(todo=>{
+          filtertodos && filtertodos.map((todo)=>{
+            console.log("todo.id", todo.id);
             return(
-
-            <ListItem key={todo.id} todo={todo} filtertodos={filtertodos} updateTodos={updateTodos} todos={todos}/>
-
+              <ListItem todo={todo} updateTodos={updateTodos} todos={todos} key={todo.id} />
             )
+
           })
         }
     
         </div>
         <div className="selection">
           {
-            filtertodos.length>0 && <Selectionbox setStatus={setStatus}/>
+            todos.length>0 && <Selectionbox setStatus={setStatus}/>
           }
         </div>
       </div>

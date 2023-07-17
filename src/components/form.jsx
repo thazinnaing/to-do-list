@@ -2,9 +2,7 @@ import React, {useState} from "react";
 
 import '../css/form.css';
 
-import BanIcon from '../ban.svg';
-
-
+import BanIcon from '../svg/ban.svg';
 
 const Form=({todos, updateTodos})=>{
     const [inputText, updateInputText]=useState([]);
@@ -18,7 +16,6 @@ const Form=({todos, updateTodos})=>{
         e.preventDefault();
 
         if(inputText !== ""){
-            console.log("underscope", inputText);
             if(!todos){
                 todos=[];
             }
@@ -26,10 +23,7 @@ const Form=({todos, updateTodos})=>{
                 [...todos, {inputText: inputText, completeAction: false, id: Math.random() *100 }]
             )
         }
-
     }
-    console.log("input", inputText);
-    console.log("todos", todos);
 
     return(
             <form>
@@ -38,7 +32,6 @@ const Form=({todos, updateTodos})=>{
             <input type='text' value={inputText} placeholder='make a task'
                 onChange={updateText} 
             />
-
             </div>
             
             <div className='plus-btn'>
@@ -50,14 +43,9 @@ const Form=({todos, updateTodos})=>{
             </div>
 
             </div>
-            
-
             </form>
-
     )
     
-        
-
 }
 
 export default Form;
