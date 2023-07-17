@@ -1,15 +1,23 @@
 import React, {useState} from "react";
-
 import '../css/form.css';
-
 import BanIcon from '../svg/ban.svg';
 
-const Form=({todos, updateTodos})=>{
-    const [inputText, updateInputText]=useState([]);
+const Form=({todos, updateTodos, inputText, updateInputText, editTodo, setEditTodo})=>{
+    
     
     const updateText=(e)=>{
         updateInputText(e.target.value);
+    }
 
+    const toUpdateTodo=()=>{
+        const newTodo=todos.map(todo=>{
+            if(todo.id === editTodo.id){
+                return(({...todo, inputText: inputText}))
+            }
+            return todo; 
+        })
+        updateTodos(newTodo);
+        setEditTodo("");
     }
 
     const addTodoList=(e)=>{
@@ -19,9 +27,15 @@ const Form=({todos, updateTodos})=>{
             if(!todos){
                 todos=[];
             }
-            updateTodos(
-                [...todos, {inputText: inputText, completeAction: false, id: Math.random() *100 }]
-            )
+            if(!editTodo){
+                updateTodos(
+                    [...todos, {inputText: inputText, completeAction: false, id: Math.random() *100 }]
+                );
+                updateInputText("");
+            }
+            else{
+                toUpdateTodo();
+            }
         }
     }
 
@@ -33,7 +47,7 @@ const Form=({todos, updateTodos})=>{
                 onChange={updateText} 
             />
             </div>
-            
+
             <div className='plus-btn'>
                 <button onClick={addTodoList}> + </button>
             </div>

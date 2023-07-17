@@ -3,22 +3,20 @@ import "../css/list.css";
 import ListItem from './listItem';
 import Selectionbox from './selectionBox';
 
-const List=({filtertodos, setStatus, updateTodos, todos})=>{
-  console.log("filtertodos", filtertodos);
+const List=({filtertodos, setStatus, updateTodos, todos, updateInputText, setEditTodo})=>{
+  
     return(
         <div className="todo-container">
         <div className="todo-content">
           
         {
           filtertodos && filtertodos.map((todo)=>{
-            console.log("todo.id", todo.id);
             return(
-              <ListItem todo={todo} updateTodos={updateTodos} todos={todos} key={todo.id} />
+              <ListItem todo={todo} updateTodos={updateTodos} todos={todos} key={todo.id} updateInputText={updateInputText} setEditTodo={setEditTodo}/>
             )
-
           })
         }
-    
+
         </div>
         <div className="selection">
           {
@@ -26,8 +24,6 @@ const List=({filtertodos, setStatus, updateTodos, todos})=>{
           }
         </div>
       </div>
-
-
 
     )
 }

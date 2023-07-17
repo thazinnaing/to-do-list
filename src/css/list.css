@@ -38,7 +38,7 @@
 .line{
     text-decoration:line-through;
 }
-.tick,.trash{
+.tick,.trash,.edit{
     width: 8%;
     display: flex;
     justify-content: center;

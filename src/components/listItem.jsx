@@ -4,8 +4,15 @@ import "../css/list.css";
 import TickIcon from "../svg/tick.svg";
 import TrashIcon from "../svg/trash.svg";
 import DoublecheckIcon from "../svg/double-check.svg";
+import EditIcon from '../svg/edit.svg';
 
-const ListItem=({todo, updateTodos, todos})=>{
+const ListItem=({todo, updateTodos, todos, updateInputText, setEditTodo})=>{
+
+    const editHandler=()=>{
+        updateInputText(todo.inputText);
+        const findTodo = todos.find(item=> item.id === todo.id);
+        setEditTodo(findTodo);
+    }
 
     const updateCompleteAction=()=>{
         updateTodos(
@@ -18,7 +25,6 @@ const ListItem=({todo, updateTodos, todos})=>{
                 }
             })
         )
-        
 
     }
     const deleteHandler=()=>{
@@ -27,11 +33,15 @@ const ListItem=({todo, updateTodos, todos})=>{
                 return(item.id !== todo.id);
             })
         )
-
     }
     return(
         <div className="todo">
                 <div className={`text ${todo.completeAction ? 'line' : ''}`}>{todo.inputText}</div>
+
+                <div className="edit">
+                    <img src={EditIcon} alt="edit" onClick={editHandler} />
+                </div>
+
                 <div className="tick">
                     <img src={`${todo.completeAction? DoublecheckIcon : TickIcon}`} alt="tick"
                     onClick={updateCompleteAction}
