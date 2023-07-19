@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/selectionbox.css';
+import '../css/selectionBox.css';
 const Selectionbox=({setStatus})=>{
 
     const updateStatus=(e)=>{

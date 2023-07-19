@@ -9,17 +9,6 @@ const Form=({todos, updateTodos, inputText, updateInputText, editTodo, setEditTo
         updateInputText(e.target.value);
     }
 
-    const toUpdateTodo=()=>{
-        const newTodo=todos.map(todo=>{
-            if(todo.id === editTodo.id){
-                return(({...todo, inputText: inputText}))
-            }
-            return todo; 
-        })
-        updateTodos(newTodo);
-        setEditTodo("");
-    }
-
     const addTodoList=(e)=>{
         e.preventDefault();
 
@@ -34,7 +23,15 @@ const Form=({todos, updateTodos, inputText, updateInputText, editTodo, setEditTo
                 updateInputText("");
             }
             else{
-                toUpdateTodo();
+                const newTodo=todos.map(todo=>{
+                    if(todo.id === editTodo.id){
+                        return(({...todo, inputText: inputText}))
+                    }
+                    return todo; 
+                })
+                updateTodos(newTodo);
+                updateInputText("");
+                setEditTodo("");
             }
         }
     }

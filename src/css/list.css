@@ -11,11 +11,7 @@
     flex-direction: column;
     gap:10px;
 }
-  
-.selection{
-    width: 40px;
-}
-  
+
 .todo{
     width: 100%;
     height: 50px;
@@ -44,12 +40,37 @@
     justify-content: center;
     align-items: center;
 }
-.trash img,.tick img{
+.trash img,.tick img,.edit img{
     width: 20px;
     height: 20px;
 }
 .trash{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+@media screen and (max-width: 840px){
+    .todo-content{
+        width: 490px;
+    }
+}
+@media screen and (max-width: 640px){
+    .todo-container{
+        padding: 0 7px;
+    }
+    .todo-content{
+        width: 100%;
+    }
+    .text{
+        font-size: 13px;
+    }
+    .tick,.trash,.edit{
+        width: 10%;
+    }
+    .trash img,.tick img,.edit img{
+        width: 13px;
+        height: 13px;
+    }
     
+
+
 }
