@@ -5,8 +5,11 @@ import TickIcon from "../svg/tick.svg";
 import TrashIcon from "../svg/trash.svg";
 import DoublecheckIcon from "../svg/double-check.svg";
 import EditIcon from '../svg/edit.svg';
+import { useContext } from 'react';
+import { todoContext } from '../App';
 
-const ListItem=({todo, updateTodos, todos, updateInputText, setEditTodo})=>{
+const ListItem=({todo})=>{
+    const {updateTodos, todos, updateInputText, setEditTodo}=useContext(todoContext);
 
     const editHandler=()=>{
         updateInputText(todo.inputText);

@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import '../css/form.css';
 import BanIcon from '../svg/ban.svg';
+import {todoContext} from "../App.jsx"
 
-const Form=({todos, updateTodos, inputText, updateInputText, editTodo, setEditTodo})=>{
+const Form=()=>{
     
-    
+    const {todos, updateTodos, inputText, updateInputText, editTodo, setEditTodo}=useContext(todoContext);
+
     const updateText=(e)=>{
         updateInputText(e.target.value);
     }

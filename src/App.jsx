@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import './App.css';
 import Form from './components/form.jsx';
 import List from './components/list';
+
+export const todoContext=createContext();
 
 const App=()=> {
 
@@ -11,7 +13,6 @@ const App=()=> {
   const [inputText, updateInputText]=useState([]);
   const [editTodo, setEditTodo]= useState(null);
 
-  
   useEffect(() => {
     if(localStorage.getItem('todos')){
       const todosFromLocalStorage= JSON.parse(localStorage.getItem('todos'));
@@ -46,12 +47,14 @@ const App=()=> {
  }, [status, todos])
 
   return(
+    <todoContext.Provider value={{todos, updateTodos,inputText,updateInputText,editTodo,setEditTodo,filtertodos,setStatus}}>
     <div className="container">
       <h1>List for your daily routine</h1>
-      <Form todos={todos} updateTodos={updateTodos} inputText={inputText} updateInputText={updateInputText} editTodo={editTodo} setEditTodo={setEditTodo}/>
+      <Form/>
       <List filtertodos={filtertodos} setStatus={setStatus} updateTodos={updateTodos} todos={todos} updateInputText={updateInputText} setEditTodo={setEditTodo}/>
     </div>
-    
+    </todoContext.Provider>
+
   )
 }
 

@@ -2,8 +2,11 @@ import React from 'react';
 import "../css/list.css";
 import ListItem from './listItem';
 import Selectionbox from './selectionBox';
+import { useContext } from 'react';
+import { todoContext } from '../App';
 
-const List=({filtertodos, setStatus, updateTodos, todos, updateInputText, setEditTodo})=>{
+const List=()=>{
+  const {filtertodos, todos, setStatus}=useContext(todoContext);
   
     return(
         <div className="todo-container">
@@ -12,7 +15,7 @@ const List=({filtertodos, setStatus, updateTodos, todos, updateInputText, setEdi
         {
           filtertodos && filtertodos.map((todo)=>{
             return(
-              <ListItem todo={todo} updateTodos={updateTodos} todos={todos} key={todo.id} updateInputText={updateInputText} setEditTodo={setEditTodo}/>
+              <ListItem todo={todo} key={todo.id}/>
             )
           })
         }
