@@ -10,7 +10,7 @@ const Selectionbox=({setStatus})=>{
         <select onClick={updateStatus}className="select">
             <option>All</option>
             <option>Completed</option>
-            <option>Incompleted</option>
+            <option>Uncompleted</option>
         </select>
     )
 }

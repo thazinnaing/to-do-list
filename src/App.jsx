@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import './App.css';
 import Form from './components/form.jsx';
 import List from './components/list';
@@ -35,7 +35,7 @@ const App=()=> {
         setfiltertodos(todos.filter(todo=>todo.completeAction));
         break;
 
-      case "Incompleted":
+      case "Uncompleted":
         setfiltertodos(todos.filter(todo=>!todo.completeAction));
         break;
 
