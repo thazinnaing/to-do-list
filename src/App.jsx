@@ -35,7 +35,7 @@ const App=()=> {
         setfiltertodos(todos.filter(todo=>todo.completeAction));
         break;
 
-      case "Uncompleted":
+      case "ncompleted":
         setfiltertodos(todos.filter(todo=>!todo.completeAction));
         break;
 
