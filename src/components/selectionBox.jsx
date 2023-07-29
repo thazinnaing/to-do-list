@@ -1,6 +1,10 @@
 import React from "react";
 import '../css/selectionBox.css';
-const Selectionbox=({setStatus})=>{
+import { useContext } from 'react';
+import { todoContext } from '../App';
+
+const Selectionbox=()=>{
+    const {setStatus}=useContext(todoContext);
 
     const updateStatus=(e)=>{
         setStatus(e.target.value);

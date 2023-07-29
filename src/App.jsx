@@ -35,7 +35,7 @@ const App=()=> {
         setfiltertodos(todos.filter(todo=>todo.completeAction));
         break;
 
-      case "ncompleted":
+      case "Uncompleted":
         setfiltertodos(todos.filter(todo=>!todo.completeAction));
         break;
 
@@ -51,7 +51,7 @@ const App=()=> {
     <div className="container">
       <h1>List for your daily routine</h1>
       <Form/>
-      <List filtertodos={filtertodos} setStatus={setStatus} updateTodos={updateTodos} todos={todos} updateInputText={updateInputText} setEditTodo={setEditTodo}/>
+      <List/>
     </div>
     </todoContext.Provider>
 

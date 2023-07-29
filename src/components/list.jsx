@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { todoContext } from '../App';
 
 const List=()=>{
-  const {filtertodos, todos, setStatus}=useContext(todoContext);
+  const {filtertodos, todos}=useContext(todoContext);
   
     return(
         <div className="todo-container">
@@ -23,7 +23,7 @@ const List=()=>{
         </div>
         <div className="selection">
           {
-            todos.length>0 && <Selectionbox setStatus={setStatus}/>
+            todos.length>0 && <Selectionbox/>
           }
         </div>
       </div>
